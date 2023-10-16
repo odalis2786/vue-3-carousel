@@ -3,33 +3,28 @@
     <Carousel
       :navigation="true"
       :pagination="true"
-      :startAutoPlay="false"
+      :startAutoPlay="true"
       :timeout="5000"
       class="carousel"
       v-slot="{ currentSlide }"
     >
       <Slide v-for="(slide, index) in carouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
-          <img :src="require(`../assets/${slide}.jpg`)" alt="" />
+          <img :src="slide" alt="" />
         </div>
       </Slide>
     </Carousel>
   </div>
 </template>
 
-<script>
+<script setup>
 import Carousel from "../components/Carousel.vue";
 import Slide from "../components/Slide.vue";
+import hondaImage from "../../img/honda.avif";
+import honda2Image from "../../img/honda2.avif";
+import honda3Image from "../../img/honda3.avif";
 
-export default {
-  name: "Home",
-  components: { Carousel, Slide },
-  setup() {
-    const carouselSlides = ["bg-1", "bg-2", "bg-3"];
-
-    return { carouselSlides };
-  },
-};
+const carouselSlides = [hondaImage, honda2Image, honda3Image];
 </script>
 
 <style lang="scss" scoped>
